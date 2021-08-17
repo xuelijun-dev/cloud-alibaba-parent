@@ -1,0 +1,10 @@
+server:
+  port: 8804
+spring:
+  application:
+    name: CONFIGCLIENT
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+customer:
+  username: prod

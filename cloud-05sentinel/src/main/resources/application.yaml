@@ -1,0 +1,27 @@
+server:
+  port: 8805
+spring:
+  application:
+    name: SENTINELCLIENT
+  cloud:
+    nacos:
+      discovery:
+        service: ${spring.application.name}
+        username: nacos
+        password: nacos
+      server-addr: localhost:8848
+    sentinel:
+      enabled: true
+      transport:
+        dashboard: localhost:8858
+        port: 8719
+#开启fein支持sentinel
+feign:
+  sentinel:
+    enabled: true
+  client:
+    config:
+
+logging:
+  level:
+    com.xue: debug

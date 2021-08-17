@@ -1,0 +1,10 @@
+server:
+  port: 8803
+spring:
+  application:
+    name: PRODUCT
+  cloud:
+    nacos:
+      discovery:
+        service: ${spring.application.name}
+      server-addr: localhost:8848

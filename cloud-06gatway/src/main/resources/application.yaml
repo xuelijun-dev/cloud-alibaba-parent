@@ -1,0 +1,27 @@
+server:
+  port: 8806
+spring:
+  application:
+    name: GATEWAY
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        service: ${spring.application.name}
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 开启从nacos获取服务列表
+      routes:
+        - id: product_route
+          # uri: http://localhost:8803
+          uri: lb://PRODUCT
+          order: 1
+          predicates:
+            - Path=/product-serv/**
+            - Before=2021-11-28T00:00:00.000+08:00
+            - Method=GET
+            - Age=18,60
+          filters:
+            - StripPrefix=1 # 转发之前去掉一层路径
+            - Log=true,false
