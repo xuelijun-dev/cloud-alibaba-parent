@@ -14,6 +14,7 @@
         <module>cloud-04configclient</module>
         <module>cloud-05sentinel</module>
         <module>cloud-06gatway</module>
+        <module>cloud-07security</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -26,8 +27,9 @@
 
     <!--自定义properties-->
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <springcloud.version>Hoxton.SR6</springcloud.version>
         <springcloud-alibaba.version>2.2.1.RELEASE</springcloud-alibaba.version>
     </properties>
@@ -41,6 +43,7 @@
                 <version>${springcloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+
             </dependency>
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
@@ -49,7 +52,27 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>1.1.23</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
